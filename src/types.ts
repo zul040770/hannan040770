@@ -37,7 +37,32 @@ export interface TrialBalanceRow {
   credit: number;
 }
 
-export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet' | 'cash-flow' | 'depreciation' | 'payroll';
+export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet' | 'cash-flow' | 'depreciation' | 'payroll' | 'invoice';
+
+export interface InvoiceItem {
+  id: string;
+  description: string;
+  quantity: number;
+  unitPrice: number;
+  amount: number;
+}
+
+export interface Invoice {
+  id: string;
+  invoiceNumber: string;
+  date: string;
+  dueDate: string;
+  customerName: string;
+  customerAddress: string;
+  customerPhone: string;
+  items: InvoiceItem[];
+  subtotal: number; // DPP
+  ppn: number; // 11% dari DPP
+  total: number; // DPP + PPN
+  status: 'draft' | 'issued' | 'paid' | 'overdue';
+  journalId?: string; // ID jurnal yang terkait
+  notes: string;
+}
 
 export interface Employee {
   id: string;

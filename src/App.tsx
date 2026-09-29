@@ -11,11 +11,13 @@ import BalanceSheet from './components/BalanceSheet';
 import CashFlow from './components/CashFlow';
 import Depreciation from './components/Depreciation';
 import Payroll from './components/Payroll';
+import InvoiceModule from './components/Invoice';
 
 const menuItems: { id: PageType; label: string; icon: string; group: string }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: 'fa-gauge-high', group: 'main' },
   { id: 'accounts', label: 'Daftar Akun', icon: 'fa-list', group: 'main' },
   { id: 'journal', label: 'Jurnal Umum', icon: 'fa-book', group: 'main' },
+  { id: 'invoice', label: 'Invoice', icon: 'fa-file-invoice', group: 'main' },
   { id: 'ledger', label: 'Buku Besar', icon: 'fa-book-open', group: 'main' },
   { id: 'trial-balance', label: 'Neraca Saldo', icon: 'fa-scale-balanced', group: 'report' },
   { id: 'income-statement', label: 'Laba Rugi', icon: 'fa-chart-line', group: 'report' },
@@ -54,6 +56,8 @@ export default function App() {
         return <ChartOfAccounts accounts={accounts} journals={journals} onSave={handleSaveAccounts} />;
       case 'journal':
         return <Journal accounts={accounts} journals={journals} onSave={handleSaveJournals} />;
+      case 'invoice':
+        return <InvoiceModule journals={journals} onSaveJournal={handleSaveJournals} />;
       case 'ledger':
         return <Ledger accounts={accounts} journals={journals} />;
       case 'trial-balance':
