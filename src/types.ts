@@ -37,4 +37,19 @@ export interface TrialBalanceRow {
   credit: number;
 }
 
-export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet' | 'cash-flow';
+export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet' | 'cash-flow' | 'depreciation';
+
+export type DepreciationMethod = 'straight-line' | 'declining-balance';
+export type TaxGroup = 1 | 2 | 3 | 4;
+
+export interface DepreciationAsset {
+  id: string;
+  name: string;
+  acquisitionDate: string;
+  cost: number;
+  residualValue: number;
+  usefulLifeYears: number;
+  method: DepreciationMethod;
+  taxGroup: TaxGroup | 'building-permanent' | 'building-non-permanent';
+  category: 'accounting' | 'fiscal' | 'both';
+}
