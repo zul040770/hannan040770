@@ -37,7 +37,51 @@ export interface TrialBalanceRow {
   credit: number;
 }
 
-export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet' | 'cash-flow' | 'depreciation';
+export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet' | 'cash-flow' | 'depreciation' | 'payroll';
+
+export interface Employee {
+  id: string;
+  employeeId: string;
+  name: string;
+  position: string;
+  department: string;
+  joinDate: string;
+  basicSalary: number;
+  allowances: {
+    transport: number;
+    meal: number;
+    health: number;
+    position: number;
+  };
+  bankAccount: string;
+  bankName: string;
+  npwp: string;
+  status: 'active' | 'inactive';
+}
+
+export interface PayrollRecord {
+  id: string;
+  employeeId: string;
+  period: string; // YYYY-MM
+  basicSalary: number;
+  allowances: {
+    transport: number;
+    meal: number;
+    health: number;
+    position: number;
+  };
+  overtime: number;
+  grossIncome: number;
+  deductions: {
+    bpjsHealth: number;
+    bpjsEmployment: number;
+    pph21: number;
+    other: number;
+  };
+  netSalary: number;
+  paymentDate: string;
+  status: 'paid' | 'pending';
+}
 
 export type DepreciationMethod = 'straight-line' | 'declining-balance';
 export type TaxGroup = 1 | 2 | 3 | 4;

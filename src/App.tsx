@@ -10,6 +10,7 @@ import IncomeStatement from './components/IncomeStatement';
 import BalanceSheet from './components/BalanceSheet';
 import CashFlow from './components/CashFlow';
 import Depreciation from './components/Depreciation';
+import Payroll from './components/Payroll';
 
 const menuItems: { id: PageType; label: string; icon: string; group: string }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: 'fa-gauge-high', group: 'main' },
@@ -21,6 +22,7 @@ const menuItems: { id: PageType; label: string; icon: string; group: string }[] 
   { id: 'balance-sheet', label: 'Neraca', icon: 'fa-file-invoice-dollar', group: 'report' },
   { id: 'cash-flow', label: 'Arus Kas', icon: 'fa-money-bill-transfer', group: 'report' },
   { id: 'depreciation', label: 'Penyusutan Aset', icon: 'fa-building-circle-arrow-right', group: 'report' },
+  { id: 'payroll', label: 'Gaji Karyawan', icon: 'fa-user-tie', group: 'payroll' },
 ];
 
 export default function App() {
@@ -64,6 +66,8 @@ export default function App() {
         return <CashFlow accounts={accounts} journals={journals} />;
       case 'depreciation':
         return <Depreciation />;
+      case 'payroll':
+        return <Payroll />;
       default:
         return <Dashboard accounts={accounts} journals={journals} onNavigate={(p) => setCurrentPage(p as PageType)} />;
     }
@@ -120,6 +124,24 @@ export default function App() {
             >
               <i className={`fa-solid ${item.icon} w-5 text-center ${currentPage === item.id ? 'text-blue-600' : 'text-gray-400'}`}></i>
               {sidebarOpen && <span className="text-sm font-medium">{item.label}</span>}
+            </button>
+          ))}
+
+          {sidebarOpen && <p className="text-xs font-semibold text-gray-400 uppercase px-3 mb-2 mt-6">Penggajian</p>}
+          {!sidebarOpen && <div className="border-t border-gray-100 my-3"></div>}
+          {menuItems.filter(m => m.group === 'payroll').map(item => (
+            <button
+              key={item.id}
+              onClick={() => setCurrentPage(item.id)}
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition text-left ${
+                currentPage === item.id
+                  ? 'bg-red-50 text-red-700'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
+              }`}
+            >
+              <i className={`fa-solid ${item.icon} w-5 text-center ${currentPage === item.id ? 'text-red-600' : 'text-gray-400'}`}></i>
+              {sidebarOpen && <span className="text-sm font-medium">{item.label}</span>}
+              {sidebarOpen && <i className="fa-solid fa-lock text-xs text-gray-400 ml-auto"></i>}
             </button>
           ))}
         </nav>
