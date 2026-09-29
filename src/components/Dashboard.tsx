@@ -57,6 +57,21 @@ export default function Dashboard({ accounts, journals, onNavigate }: Props) {
 
   return (
     <div className="space-y-6">
+      {/* Periode Banner */}
+      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-4 text-white flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <i className="fa-solid fa-calendar-days text-2xl"></i>
+          <div>
+            <p className="font-bold text-lg">Periode Pembukuan Aktif</p>
+            <p className="text-blue-100 text-sm">1 Januari 2026 - 31 Desember 2026</p>
+          </div>
+        </div>
+        <div className="text-right">
+          <p className="text-xs text-blue-200">Tahun Buku</p>
+          <p className="font-bold text-2xl">2026</p>
+        </div>
+      </div>
+
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
@@ -64,7 +79,7 @@ export default function Dashboard({ accounts, journals, onNavigate }: Props) {
         </div>
         <div className="text-sm text-gray-500">
           <i className="fa-regular fa-calendar mr-1"></i>
-          Periode: Januari 2024
+          Periode: 1 Jan - 31 Des 2026
         </div>
       </div>
 

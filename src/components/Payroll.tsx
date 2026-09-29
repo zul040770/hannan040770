@@ -91,34 +91,7 @@ const defaultEmployees: Employee[] = [
   },
 ];
 
-const defaultPayrolls: PayrollRecord[] = [
-  {
-    id: 'p1',
-    employeeId: 'EMP001',
-    period: '2024-01',
-    basicSalary: 15000000,
-    allowances: { transport: 1500000, meal: 1000000, health: 500000, position: 2000000 },
-    overtime: 0,
-    grossIncome: 20000000,
-    deductions: { bpjsHealth: 200000, bpjsEmployment: 175000, pph21: 583333, other: 0 },
-    netSalary: 19041667,
-    paymentDate: '2024-01-28',
-    status: 'paid',
-  },
-  {
-    id: 'p2',
-    employeeId: 'EMP002',
-    period: '2024-01',
-    basicSalary: 8000000,
-    allowances: { transport: 750000, meal: 600000, health: 300000, position: 500000 },
-    overtime: 500000,
-    grossIncome: 10650000,
-    deductions: { bpjsHealth: 106500, bpjsEmployment: 100000, pph21: 108333, other: 0 },
-    netSalary: 10335167,
-    paymentDate: '2024-01-28',
-    status: 'paid',
-  },
-];
+const defaultPayrolls: PayrollRecord[] = [];
 
 // PPh 21 calculation based on UU HPP (Harmonisasi Peraturan Perpajakan)
 // Progressive rates: 5% up to 60M, 15% 60M-250M, 25% 250M-500M, 30% 500M-5B, 35% above 5B
@@ -152,7 +125,7 @@ function calculateBPJS(grossSalary: number) {
   const bpjsHealth = Math.round(healthCap * 0.01);
 
   // BPJS Ketenagakerjaan (JHT 2%, JP 1%, JKK 0.24%, JKM 0.3%)
-  const salaryCap = Math.min(grossSalary, 10042300); // Max 2024
+  const salaryCap = Math.min(grossSalary, 10587600); // Max 2026
   const bpjsEmployment = Math.round(salaryCap * 0.02); // JHT employee portion
 
   return { bpjsHealth, bpjsEmployment };
@@ -180,15 +153,15 @@ export default function Payroll() {
   const getEmployee = (empId: string) => employees.find(e => e.employeeId === empId);
 
   const totalMonthlyPayroll = payrolls
-    .filter(p => p.period === '2024-01')
+    .filter(p => p.period === '2026-01')
     .reduce((s, p) => s + p.netSalary, 0);
 
   const totalGrossPayroll = payrolls
-    .filter(p => p.period === '2024-01')
+    .filter(p => p.period === '2026-01')
     .reduce((s, p) => s + p.grossIncome, 0);
 
   const totalDeductions = payrolls
-    .filter(p => p.period === '2024-01')
+    .filter(p => p.period === '2026-01')
     .reduce((s, p) => s + p.deductions.bpjsHealth + p.deductions.bpjsEmployment + p.deductions.pph21 + p.deductions.other, 0);
 
   return (
@@ -347,7 +320,7 @@ export default function Payroll() {
           <div className="space-y-4">
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
               <div className="px-6 py-4 bg-gradient-to-r from-green-600 to-emerald-600">
-                <h3 className="text-white font-bold text-lg">Daftar Gaji - Januari 2024</h3>
+                <h3 className="text-white font-bold text-lg">Daftar Gaji - Januari 2026</h3>
                 <p className="text-green-100 text-sm">Rekapitulasi gaji karyawan periode berjalan</p>
               </div>
               <div className="overflow-x-auto">

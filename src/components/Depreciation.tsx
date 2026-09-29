@@ -12,11 +12,7 @@ const TAX_RATES: Record<string, { usefulLife: number; straightLine: number; decl
   'building-non-permanent': { usefulLife: 10, straightLine: 5, decliningBalance: 0, description: 'Bangunan Non-Permanen (kayu, semi-permanen)' },
 };
 
-const defaultAssets: DepreciationAsset[] = [
-  { id: 'd1', name: 'Peralatan Kantor (Komputer)', acquisitionDate: '2024-01-05', cost: 15000000, residualValue: 0, usefulLifeYears: 4, method: 'straight-line', taxGroup: 1, category: 'both' },
-  { id: 'd2', name: 'Kendaraan Operasional', acquisitionDate: '2024-03-01', cost: 250000000, residualValue: 0, usefulLifeYears: 8, method: 'straight-line', taxGroup: 2, category: 'both' },
-  { id: 'd3', name: 'Furniture Kantor', acquisitionDate: '2024-01-10', cost: 8000000, residualValue: 0, usefulLifeYears: 4, method: 'straight-line', taxGroup: 1, category: 'both' },
-];
+const defaultAssets: DepreciationAsset[] = [];
 
 export default function Depreciation() {
   const [assets, setAssets] = useState<DepreciationAsset[]>(() => {
@@ -30,7 +26,7 @@ export default function Depreciation() {
   const [selectedAsset, setSelectedAsset] = useState<string | null>(null);
   const [form, setForm] = useState<Omit<DepreciationAsset, 'id'>>({
     name: '',
-    acquisitionDate: '2024-01-01',
+    acquisitionDate: '2026-01-01',
     cost: 0,
     residualValue: 0,
     usefulLifeYears: 4,

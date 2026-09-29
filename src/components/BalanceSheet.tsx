@@ -57,7 +57,7 @@ export default function BalanceSheet({ accounts, journals }: Props) {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden max-w-4xl mx-auto">
         <div className="bg-gradient-to-r from-blue-700 to-indigo-700 px-6 py-4">
           <h3 className="text-white font-bold text-xl text-center">NERACA</h3>
-          <p className="text-blue-100 text-sm text-center">Per 31 Januari 2024</p>
+          <p className="text-blue-100 text-sm text-center">Per 31 Desember 2026</p>
         </div>
 
         <div className="p-6">

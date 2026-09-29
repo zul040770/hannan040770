@@ -31,78 +31,7 @@ export const defaultAccounts: Account[] = [
   { id: '28', code: '5-5070', name: 'Beban Administrasi', type: 'expense', normalBalance: 'debit' },
 ];
 
-export const sampleJournals: JournalEntry[] = [
-  {
-    id: 'j1',
-    date: '2024-01-02',
-    description: 'Setoran modal awal pemilik',
-    reference: 'JU-001',
-    lines: [
-      { accountId: '1', debit: 50000000, credit: 0 },
-      { accountId: '15', debit: 0, credit: 50000000 },
-    ],
-  },
-  {
-    id: 'j2',
-    date: '2024-01-05',
-    description: 'Pembelian peralatan kantor',
-    reference: 'JU-002',
-    lines: [
-      { accountId: '6', debit: 15000000, credit: 0 },
-      { accountId: '1', debit: 0, credit: 15000000 },
-    ],
-  },
-  {
-    id: 'j3',
-    date: '2024-01-10',
-    description: 'Pendapatan jasa konsultasi',
-    reference: 'JU-003',
-    lines: [
-      { accountId: '1', debit: 8000000, credit: 0 },
-      { accountId: '18', debit: 0, credit: 8000000 },
-    ],
-  },
-  {
-    id: 'j4',
-    date: '2024-01-15',
-    description: 'Pembayaran gaji karyawan',
-    reference: 'JU-004',
-    lines: [
-      { accountId: '21', debit: 5000000, credit: 0 },
-      { accountId: '1', debit: 0, credit: 5000000 },
-    ],
-  },
-  {
-    id: 'j5',
-    date: '2024-01-20',
-    description: 'Pembayaran sewa kantor 1 tahun',
-    reference: 'JU-005',
-    lines: [
-      { accountId: '22', debit: 12000000, credit: 0 },
-      { accountId: '1', debit: 0, credit: 12000000 },
-    ],
-  },
-  {
-    id: 'j6',
-    date: '2024-01-25',
-    description: 'Pendapatan jasa desain',
-    reference: 'JU-006',
-    lines: [
-      { accountId: '3', debit: 10000000, credit: 0 },
-      { accountId: '18', debit: 0, credit: 10000000 },
-    ],
-  },
-  {
-    id: 'j7',
-    date: '2024-01-28',
-    description: 'Pembayaran beban listrik dan air',
-    reference: 'JU-007',
-    lines: [
-      { accountId: '23', debit: 1500000, credit: 0 },
-      { accountId: '1', debit: 0, credit: 1500000 },
-    ],
-  },
-];
+export const sampleJournals: JournalEntry[] = [];
 
 export function loadAccounts(): Account[] {
   const stored = localStorage.getItem('accounts');
@@ -115,11 +44,28 @@ export function saveAccounts(accounts: Account[]) {
   localStorage.setItem('accounts', JSON.stringify(accounts));
 }
 
+export const PERIOD_START = '2026-01-01';
+export const PERIOD_END = '2026-12-31';
+export const PERIOD_LABEL = 'Tahun Buku 2026 (1 Januari - 31 Desember 2026)';
+
 export function loadJournals(): JournalEntry[] {
   const stored = localStorage.getItem('journals');
+  const version = localStorage.getItem('app_version');
+  
+  // Reset data jika versi berubah (migrasi ke periode 2026)
+  if (version !== '2026') {
+    localStorage.setItem('journals', JSON.stringify([]));
+    localStorage.setItem('invoices', JSON.stringify([]));
+    localStorage.setItem('employees', JSON.stringify('[]'));
+    localStorage.setItem('payrolls', JSON.stringify([]));
+    localStorage.setItem('depreciation_assets', JSON.stringify([]));
+    localStorage.setItem('app_version', '2026');
+    return [];
+  }
+  
   if (stored) return JSON.parse(stored);
-  localStorage.setItem('journals', JSON.stringify(sampleJournals));
-  return sampleJournals;
+  localStorage.setItem('journals', JSON.stringify([]));
+  return [];
 }
 
 export function saveJournals(journals: JournalEntry[]) {

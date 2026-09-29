@@ -49,7 +49,7 @@ export default function TrialBalance({ accounts, journals }: Props) {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4">
           <h3 className="text-white font-bold text-xl text-center">NERACA SALDO</h3>
-          <p className="text-indigo-100 text-sm text-center">Per 31 Januari 2024</p>
+          <p className="text-indigo-100 text-sm text-center">Per 31 Desember 2026</p>
         </div>
 
         <div className="overflow-x-auto">

@@ -113,7 +113,7 @@ export default function CashFlow({ accounts, journals }: Props) {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden max-w-4xl mx-auto">
         <div className="bg-gradient-to-r from-teal-600 to-cyan-600 px-6 py-4">
           <h3 className="text-white font-bold text-xl text-center">LAPORAN ARUS KAS</h3>
-          <p className="text-teal-100 text-sm text-center">Untuk Periode yang Berakhir 31 Januari 2024</p>
+          <p className="text-teal-100 text-sm text-center">Untuk Periode yang Berakhir 31 Desember 2026</p>
           <p className="text-teal-200 text-xs text-center mt-1">(Metode Tidak Langsung)</p>
         </div>
 

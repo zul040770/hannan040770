@@ -11,7 +11,7 @@ interface Props {
 export default function Journal({ accounts, journals, onSave }: Props) {
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [date, setDate] = useState('2026-01-01');
   const [description, setDescription] = useState('');
   const [reference, setReference] = useState('');
   const [lines, setLines] = useState<JournalLine[]>([

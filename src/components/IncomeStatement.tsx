@@ -41,7 +41,7 @@ export default function IncomeStatement({ accounts, journals }: Props) {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden max-w-3xl mx-auto">
         <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4">
           <h3 className="text-white font-bold text-xl text-center">LAPORAN LABA RUGI</h3>
-          <p className="text-green-100 text-sm text-center">Untuk Periode yang Berakhir 31 Januari 2024</p>
+          <p className="text-green-100 text-sm text-center">Untuk Periode yang Berakhir 31 Desember 2026</p>
         </div>
 
         <div className="p-6 space-y-6">
