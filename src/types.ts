@@ -37,4 +37,4 @@ export interface TrialBalanceRow {
   credit: number;
 }
 
-export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet';
+export type PageType = 'dashboard' | 'accounts' | 'journal' | 'ledger' | 'trial-balance' | 'income-statement' | 'balance-sheet' | 'cash-flow';

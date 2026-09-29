@@ -8,6 +8,7 @@ import Ledger from './components/Ledger';
 import TrialBalance from './components/TrialBalance';
 import IncomeStatement from './components/IncomeStatement';
 import BalanceSheet from './components/BalanceSheet';
+import CashFlowStatement from './components/CashFlowStatement';
 
 const menuItems: { id: PageType; label: string; icon: string; group: string }[] = [
   { id: 'dashboard', label: 'Dashboard', icon: 'fa-gauge-high', group: 'main' },
@@ -17,6 +18,7 @@ const menuItems: { id: PageType; label: string; icon: string; group: string }[] 
   { id: 'trial-balance', label: 'Neraca Saldo', icon: 'fa-scale-balanced', group: 'report' },
   { id: 'income-statement', label: 'Laba Rugi', icon: 'fa-chart-line', group: 'report' },
   { id: 'balance-sheet', label: 'Neraca', icon: 'fa-file-invoice-dollar', group: 'report' },
+  { id: 'cash-flow', label: 'Arus Kas', icon: 'fa-money-bill-transfer', group: 'report' },
 ];
 
 export default function App() {
@@ -56,6 +58,8 @@ export default function App() {
         return <IncomeStatement accounts={accounts} journals={journals} />;
       case 'balance-sheet':
         return <BalanceSheet accounts={accounts} journals={journals} />;
+      case 'cash-flow':
+        return <CashFlowStatement accounts={accounts} journals={journals} />;
       default:
         return <Dashboard accounts={accounts} journals={journals} onNavigate={(p) => setCurrentPage(p as PageType)} />;
     }
